@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "/ZkUg4EAs65bqVd75ts6/9Oc+XWqzjeiZOHgzoHfngugHexC9dYQjyOyc8sAc9WaA1UPTEv2Xtak9QnMEgPCMw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Epulapp\\Desktop\\NBAAPP\\back\\NBAAPP\\NBAAPP\\NBAAPP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Epulapp\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
