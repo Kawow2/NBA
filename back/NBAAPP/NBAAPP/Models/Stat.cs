@@ -1,6 +1,6 @@
 ﻿namespace NBAAPP.Models
 {
-    public class Stats
+    public class Stat
     {
         public int ID { get; set; }
         public int PlayerID { get; set; }
