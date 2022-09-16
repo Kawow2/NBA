@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using NBAAPP.Controllers;
 using NBAAPP.Data;
+using NBAAPP.Interface.Manager;
+using NBAAPP.Interface.Provider;
+using NBAAPP.Manager;
+using NBAAPP.Provider;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +24,9 @@ builder.Services.AddCors(options => options.AddPolicy(name: "NBAOrigins",
     {
         policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
     }));
-
+builder.Services.AddScoped<IPlayerProvider, PlayerProvider>();
+builder.Services.AddScoped<IPlayerManager, PlayerManager>();
+builder.Services.AddScoped<DbContext, DataContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

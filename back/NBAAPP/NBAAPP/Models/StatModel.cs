@@ -1,7 +1,10 @@
-﻿namespace NBAAPP.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace NBAAPP.Models
 {
-    public class Stat
+    public class StatModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int PlayerID { get; set; }
         public int GameID { get; set; }

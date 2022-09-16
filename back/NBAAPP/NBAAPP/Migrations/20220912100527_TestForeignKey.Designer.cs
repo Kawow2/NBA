@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBAAPP.Data;
 
@@ -11,9 +12,10 @@ using NBAAPP.Data;
 namespace NBAAPP.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220912100527_TestForeignKey")]
+    partial class TestForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace NBAAPP.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("NBAAPP.Models.GameModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Game", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -53,7 +55,7 @@ namespace NBAAPP.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("NBAAPP.Models.PlayerModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Player", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -62,25 +64,24 @@ namespace NBAAPP.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("HeightFeet")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HeightInches")
+                    b.Property<int?>("Height")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Position")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
 
                     b.Property<int>("TeamID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WeightPounds")
+                    b.Property<int?>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -90,7 +91,7 @@ namespace NBAAPP.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("NBAAPP.Models.StatModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Stat", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -148,7 +149,7 @@ namespace NBAAPP.Migrations
                     b.ToTable("Stats");
                 });
 
-            modelBuilder.Entity("NBAAPP.Models.TeamModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Team", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -179,9 +180,9 @@ namespace NBAAPP.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("NBAAPP.Models.PlayerModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Player", b =>
                 {
-                    b.HasOne("NBAAPP.Models.TeamModel", "Team")
+                    b.HasOne("NBAAPP.Models.Team", "Team")
                         .WithMany("Players")
                         .HasForeignKey("TeamID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -190,7 +191,7 @@ namespace NBAAPP.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("NBAAPP.Models.TeamModel", b =>
+            modelBuilder.Entity("NBAAPP.Models.Team", b =>
                 {
                     b.Navigation("Players");
                 });

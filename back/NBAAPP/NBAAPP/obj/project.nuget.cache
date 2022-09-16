@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MK19c9q+aDxeTu5lk2vK/ZyJgj0oXlpd7szGhapvK+aiSVlRHvKEjA7czVMd5f+dSwELMhesgYsZmPZbrVuOpA==",
+  "dgSpecHash": "s8Az3/4q+/ew3RKsVEIQTmvn22e3+Mr8UrkIAoMA7YbRjSMU2Uz+g0NllWBJ3UYMxTmG4AbD6G18klJLLJZB7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Epulapp\\Desktop\\NBAAPP\\back\\NBAAPP\\NBAAPP\\NBAAPP.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\Epulapp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Epulapp\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Epulapp\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Epulapp\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Epulapp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
