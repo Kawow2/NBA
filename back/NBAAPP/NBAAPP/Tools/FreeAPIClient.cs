@@ -10,9 +10,11 @@ namespace NBAAPP.Tools
 {
     public class FreeAPIClient
     {
-
+        private string APIUrl { get; set; } = "https://free-nba.p.rapidapi.com";
+        private HttpClient client { get; set; }
         public FreeAPIClient()
         {
+            client = new HttpClient();
         }
 
 
@@ -26,26 +28,46 @@ namespace NBAAPP.Tools
             var listPlayer = new List<PlayerModel>();
             var isEnd = false;
             var currentPage = 0;
-            var url = "https://free-nba.p.rapidapi.com/players?per_page=100&page=";
-            var client = new HttpClient();
 
             while(!isEnd)
             {
-                isEnd = await SendRequest(listPlayer, currentPage, url, client, isEnd);
-                Thread.Sleep(800);
-                Debug.WriteLine("currentpage : "+currentPage);
+                var result = await sendRequestGet(this.APIUrl + "/players?page="+currentPage+"&per_page=100");
+                var data = JsonConvert.DeserializeObject<DataAPI<PlayerModel>>(result);
+                listPlayer.AddRange(data?.Data.ToList());
                 currentPage++;
+                isEnd = currentPage == data.MetaData.TotalPages;
             }
+
+           
 
             return listPlayer;
         }
 
-        private async Task<bool> SendRequest(List<PlayerModel> listPlayer, int currentPage, string url, HttpClient client,bool isEnd)
+        public async Task<List<TeamModel>> GetTeamsAsync()
+        {
+            var listTeam = new List<TeamModel>();
+            var isEnd = false;
+            var currentPage = 0;
+
+            while (!isEnd)
+            {
+                var result = await sendRequestGet(APIUrl + "/teams?page=" + currentPage + "&per_page=100");
+                var data = JsonConvert.DeserializeObject<DataAPI<TeamModel>>(result);
+                listTeam.AddRange(data?.Data.ToList());
+                currentPage++;
+                isEnd = currentPage == data.MetaData.TotalPages;
+            }
+
+            return listTeam;
+        }
+
+
+        private async Task<string> sendRequestGet(string url)
         {
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri(url + currentPage),
+                RequestUri = new Uri(url),
                 Headers =
                     {
                         { "X-RapidAPI-Key", "0a7170eb62msh388edd5640a1585p1d75d6jsn734327957277" },
@@ -56,21 +78,20 @@ namespace NBAAPP.Tools
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<DataAPI>(body);
-                listPlayer.AddRange(data?.Data);
-                if (currentPage == 2)
-                    return true;
+                return body;
             }
 
-            return false;
         }
+
+      
+
 
         
     }
-    public class DataAPI
+    public class DataAPI<T>
     {
         [JsonProperty("data")]
-        public List<PlayerModel> Data { get; set; }
+        public List<T> Data { get; set; }
 
         [JsonProperty("meta")]
         public MetadataAPI MetaData { get; set; }

@@ -14,6 +14,13 @@ namespace NBAAPP.Provider
             db = data;
         }
 
+        public void DeleteAllPlayers()
+        {
+            db.Players.RemoveRange(db.Players);
+            db.SaveChanges();
+
+        }
+
         public IEnumerable<PlayerModel> GetAllPlayers()
         {
             return db.Players;

@@ -12,21 +12,40 @@ namespace NBAAPP.Controllers
     {
         
         private IPlayerManager playerManager;
+        private ITeamManager teamManager;
 
-        public ToolsController(IPlayerManager playerMana)
+        public ToolsController(IPlayerManager playerMana, ITeamManager teamMana)
         {
             this.playerManager = playerMana;
+            this.teamManager = teamMana;
         }
 
                 
-        [HttpGet]
+        [HttpPost]
+        [Route("fillTablePlayer")]
         public async Task FillPlayersTable()
         {
             var client = new FreeAPIClient();
+            playerManager.DeleteAllPlayers();
             var players = await client.GetPlayersAsync();
-            playerManager.SaveAll(players);
-
-            
+            var teams = teamManager.GetAll();
+            foreach (var player in players)
+            {
+                player.TeamID = teams.FirstOrDefault(x => x.TeamName == player.Team.TeamName).ID;
+            }
+            playerManager.SaveAll(players);            
         }
+
+        [HttpPost]
+        [Route("fillTableTeams")]
+        public async Task FillTableTeams()
+        {
+            var client = new FreeAPIClient();
+            teamManager.DeleteAll();
+            var teams = await client.GetTeamsAsync();
+            teamManager.SaveAll(teams);
+        }
+
+
     }
 }

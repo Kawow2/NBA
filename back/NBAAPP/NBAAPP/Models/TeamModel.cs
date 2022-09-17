@@ -14,8 +14,10 @@ namespace NBAAPP.Models
         public string? City { get; set; }
         public string? Conference { get; set; }
         public string? Division { get; set; }
+        [JsonProperty("full_name")]
         public string? FullName { get; set; }
+        [JsonProperty("name")]
         public string? TeamName { get; set; }
-        public List<PlayerModel> Players{ get; set; }
+        public List<PlayerModel>? Players{ get; set; }
     }
 }

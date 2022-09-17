@@ -13,6 +13,11 @@ namespace NBAAPP.Manager
             playerProvider = playerPro;
         }
 
+        public void DeleteAllPlayers()
+        {
+            playerProvider.DeleteAllPlayers();
+        }
+
         public void SaveAll(List<PlayerModel> players)
         {
             foreach (var player in players)

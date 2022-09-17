@@ -26,6 +26,8 @@ builder.Services.AddCors(options => options.AddPolicy(name: "NBAOrigins",
     }));
 builder.Services.AddScoped<IPlayerProvider, PlayerProvider>();
 builder.Services.AddScoped<IPlayerManager, PlayerManager>();
+builder.Services.AddScoped<ITeamManager, TeamManager>();
+builder.Services.AddScoped<ITeamProvider, TeamProvider>();
 builder.Services.AddScoped<DbContext, DataContext>();
 var app = builder.Build();
 
